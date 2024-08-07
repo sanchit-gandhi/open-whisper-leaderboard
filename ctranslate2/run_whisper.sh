@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export PYTHONPATH="..":$PYTHONPATH
-conda activate faster-whisper
 
 MODEL_IDs=("large-v3")
 DEVICE_INDEX=0

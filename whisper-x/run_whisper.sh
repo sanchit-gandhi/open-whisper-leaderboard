@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export PYTHONPATH="..":$PYTHONPATH
-conda activate whisper-x
 
 MODEL_IDs=("large-v3")
 DEVICE_INDEX=0
