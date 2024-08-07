@@ -1,4 +1,4 @@
-"""Run evaluation for ctranslate2 whisper models."""""
+"""Run evaluation for ctranslate2 openai-whisper models."""""
 import argparse
 import os
 import time
@@ -94,7 +94,7 @@ if __name__ == "__main__":
         "--model_id",
         type=str,
         required=True,
-        help="Model identifier. Should be loadable with faster-whisper",
+        help="Model identifier. Should be loadable with faster-openai-whisper",
     )
     parser.add_argument(
         '--dataset_path', type=str, default='esb/datasets', help='Dataset path. By default, it is `esb/datasets`'
