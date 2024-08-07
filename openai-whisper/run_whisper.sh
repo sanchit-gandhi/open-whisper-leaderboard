@@ -13,34 +13,10 @@ do
     python run_eval.py \
         --model_id=${MODEL_ID} \
         --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="ami" \
-        --split="test" \
-        --device="cuda:0" \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="earnings22" \
-        --split="test" \
-        --device="cuda:0" \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="gigaspeech" \
-        --split="test" \
-        --device="cuda:0" \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
         --dataset="librispeech" \
         --split="test.clean" \
         --device="cuda:0" \
-        --max_eval_samples=5
+        --max_eval_samples=-1
 
     python run_eval.py \
         --model_id=${MODEL_ID} \
@@ -48,31 +24,7 @@ do
         --dataset="librispeech" \
         --split="test.other" \
         --device="cuda:0" \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="spgispeech" \
-        --split="test" \
-        --device="cuda:0" \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="tedlium" \
-        --split="test" \
-        --device="cuda:0" \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="voxpopuli" \
-        --split="test" \
-        --device="cuda:0" \
-        --max_eval_samples=5
+        --max_eval_samples=-1
 
     # Evaluate results
     RUNDIR=`pwd` && \
@@ -87,15 +39,7 @@ do
         --dataset="default" \
         --split="test" \
         --device="cuda:0" \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="spgispeech" \
-        --split="test" \
-        --device="cuda:0" \
-        --max_eval_samples=5
+        --max_eval_samples=-1
 
     python run_eval.py \
         --model_id=${MODEL_ID} \
@@ -103,23 +47,7 @@ do
         --dataset="default" \
         --split="test" \
         --device="cuda:0" \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="distil-whisper/earnings21" \
-        --dataset="default" \
-        --split="full" \
-        --device="cuda:0" \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="distil-whisper/earnings22" \
-        --dataset="full" \
-        --split="test" \
-        --device="cuda:0" \
-        --max_eval_samples=5
+        --max_eval_samples=-1
 
     # Evaluate results
     RUNDIR=`pwd` && \

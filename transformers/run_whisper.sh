@@ -10,34 +10,6 @@ num_models=${#MODEL_IDs[@]}
 for (( i=0; i<${num_models}; i++ ));
 do
     MODEL_ID=${MODEL_IDs[$i]}
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="ami" \
-        --split="test" \
-        --device=0 \
-        --batch_size=1 \
-        --max_eval_samples=-1
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="earnings22" \
-        --split="test" \
-        --device=0 \
-        --batch_size=1 \
-        --max_eval_samples=-1
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="gigaspeech" \
-        --split="test" \
-        --device=0 \
-        --batch_size=1 \
-        --max_eval_samples=-1
-
     python run_eval.py \
         --model_id=${MODEL_ID} \
         --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
@@ -55,33 +27,6 @@ do
         --device=0 \
         --batch_size=1 \
         --max_eval_samples=-1
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="spgispeech" \
-        --split="test" \
-        --device=0 \
-        --batch_size=1 \
-        --max_eval_samples=-1
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="tedlium" \
-        --split="test" \
-        --device=0 \
-        --batch_size=1 \
-        --max_eval_samples=-1
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="voxpopuli" \
-        --split="test" \
-        --device=0 \
-        --batch_size=1 \
-        --max_eval_samples=-1
         
     # Evaluate results
     RUNDIR=`pwd` && \
@@ -90,23 +35,14 @@ do
     cd $RUNDIR
     mv "results" "short-form-results"
 
-      python run_eval.py \
+    python run_eval.py \
         --model_id=${MODEL_ID} \
         --dataset_path="distil-whisper/meanwhile" \
         --dataset="default" \
         --split="test" \
         --device=0 \
         --batch_size=${BATCH_SIZE} \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="hf-audio/esb-datasets-test-only-sorted" \
-        --dataset="spgispeech" \
-        --split="test" \
-        --device=0 \
-        --batch_size=${BATCH_SIZE} \
-        --max_eval_samples=5
+        --max_eval_samples=-1
 
     python run_eval.py \
         --model_id=${MODEL_ID} \
@@ -115,25 +51,7 @@ do
         --split="test" \
         --device=0 \
         --batch_size=${BATCH_SIZE} \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="distil-whisper/earnings21" \
-        --dataset="full" \
-        --split="test" \
-        --device=0 \
-        --batch_size=${BATCH_SIZE} \
-        --max_eval_samples=5
-
-    python run_eval.py \
-        --model_id=${MODEL_ID} \
-        --dataset_path="distil-whisper/earnings22" \
-        --dataset="full" \
-        --split="test" \
-        --device=0 \
-        --batch_size=${BATCH_SIZE} \
-        --max_eval_samples=5
+        --max_eval_samples=-1
 
     # Evaluate results
     RUNDIR=`pwd` && \
