@@ -49,7 +49,7 @@ def main(args):
             padding_audios = [audios[-1] for _ in range(padding_size)]
             audios.extend(padding_audios)
 
-        if not model.can_generate(): #or len(audios[0]) > processor.feature_extractor.n_samples:
+        if not model.can_generate() or len(audios[0]) > processor.feature_extractor.n_samples:
             # 1.2 Either CTC pre-processing (normalize to mean 0, std 1), or long-form Whisper processing
             inputs = processor(
                 audios,

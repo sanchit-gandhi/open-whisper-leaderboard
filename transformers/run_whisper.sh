@@ -2,7 +2,7 @@
 
 export PYTHONPATH="..":$PYTHONPATH
 
-MODEL_IDs=("openai/whisper-tiny.en" "openai/whisper-small.en" "openai/whisper-base.en" "openai/whisper-medium.en" "openai/whisper-large" "openai/whisper-large-v2")
+MODEL_IDs=("openai/whisper-large-v3")
 BATCH_SIZE=64
 
 num_models=${#MODEL_IDs[@]}
@@ -17,7 +17,10 @@ do
         --split="test.clean" \
         --device=0 \
         --batch_size=1 \
-        --max_eval_samples=-1
+        --torch_compile \
+        --compile_mode "reduce-overhead" \
+        --max_eval_samples=-1 \
+        --max_new_tokens=256
 
     python run_eval.py \
         --model_id=${MODEL_ID} \
@@ -26,7 +29,10 @@ do
         --split="test.other" \
         --device=0 \
         --batch_size=1 \
-        --max_eval_samples=-1
+        --torch_compile \
+        --compile_mode "reduce-overhead" \
+        --max_eval_samples=-1 \
+        --max_new_tokens=256
         
     # Evaluate results
     RUNDIR=`pwd` && \
@@ -42,7 +48,10 @@ do
         --split="test" \
         --device=0 \
         --batch_size=${BATCH_SIZE} \
-        --max_eval_samples=-1
+        --torch_compile \
+        --compile_mode "reduce-overhead" \
+        --max_eval_samples=-1 \
+        --max_new_tokens=256
 
     python run_eval.py \
         --model_id=${MODEL_ID} \
@@ -51,7 +60,10 @@ do
         --split="test" \
         --device=0 \
         --batch_size=${BATCH_SIZE} \
-        --max_eval_samples=-1
+        --torch_compile \
+        --compile_mode "reduce-overhead" \
+        --max_eval_samples=-1 \
+        --max_new_tokens=256
 
     # Evaluate results
     RUNDIR=`pwd` && \
