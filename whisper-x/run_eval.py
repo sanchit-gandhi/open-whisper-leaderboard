@@ -21,7 +21,14 @@ def main(args) -> None:
     def benchmark(batch):
         start_time = time.time()
         audio = batch["audio"]["array"].astype(np.float32)
-        result = model.transcribe(audio, batch_size=args.batch_size)
+        result = model.transcribe(
+            audio,
+            batch_size=args.batch_size,
+            beam_size=1,
+            best_of=1,
+            temperature=0.0,
+            condition_on_previous_text=False,
+        )
         result = whisperx.align(result["segments"], alignment_model, metadata, audio, args.device, return_char_alignments=False)
         batch["transcription_time_s"] = time.time() - start_time
         batch["audio_length_s"] = len(batch["audio"]["array"]) / batch["audio"]["sampling_rate"]

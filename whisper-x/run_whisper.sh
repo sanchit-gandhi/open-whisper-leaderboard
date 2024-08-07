@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export PYTHONPATH="..":$PYTHONPATH
-conda activate openai-whisper-x
+conda activate whisper-x
 
 MODEL_IDs=("large-v3")
 DEVICE_INDEX=0
@@ -110,7 +110,7 @@ do
     python run_eval.py \
         --model_id=${MODEL_ID} \
         --dataset_path="distil-whisper/earnings21" \
-        --dataset="default" \
+        --dataset="full" \
         --split="test" \
         --device=${DEVICE_INDEX} \
         --max_eval_samples=5

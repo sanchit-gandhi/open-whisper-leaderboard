@@ -20,7 +20,7 @@ def main(args) -> None:
     def benchmark(batch):
         start_time = time.time()
         sample = torch.from_numpy(batch["audio"]["array"]).float()
-        pred_out = transcribe(model, audio=sample)["text"]
+        pred_out = transcribe(model, audio=sample, condition_on_previous_text=False, temperature=0.0)["text"]
         batch["transcription_time_s"] = time.time() - start_time
 
         batch["audio_length_s"] = len(batch["audio"]["array"]) / batch["audio"]["sampling_rate"]

@@ -111,7 +111,7 @@ do
         --model_id=${MODEL_ID} \
         --dataset_path="distil-whisper/earnings21" \
         --dataset="default" \
-        --split="test" \
+        --split="full" \
         --device=${DEVICE_INDEX} \
         --max_eval_samples=5
 

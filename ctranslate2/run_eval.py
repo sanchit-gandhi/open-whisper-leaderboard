@@ -1,4 +1,4 @@
-"""Run evaluation for ctranslate2 openai-whisper models."""""
+"""Run evaluation for ctranslate2 whisper models."""""
 import argparse
 import os
 import time
@@ -23,7 +23,14 @@ def main(args) -> None:
 
     def benchmark(batch):
         start_time = time.time()
-        segments, _ = asr_model.transcribe(batch["audio"]["array"], language="en")
+        segments, _ = asr_model.transcribe(
+            batch["audio"]["array"],
+            language="en",
+            beam_size=1,
+            best_of=1,
+            temperature=0.0,
+            condition_on_previous_text=False,
+        )
         outputs = [segment._asdict() for segment in segments]
         batch["audio_length_s"] = len(batch["audio"]["array"]) / batch["audio"]["sampling_rate"]
         batch["transcription_time_s"] = time.time() - start_time
@@ -94,7 +101,7 @@ if __name__ == "__main__":
         "--model_id",
         type=str,
         required=True,
-        help="Model identifier. Should be loadable with faster-openai-whisper",
+        help="Model identifier. Should be loadable with faster-whisper",
     )
     parser.add_argument(
         '--dataset_path', type=str, default='esb/datasets', help='Dataset path. By default, it is `esb/datasets`'
