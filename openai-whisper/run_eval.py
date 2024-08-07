@@ -111,9 +111,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--device",
-        type=int,
-        default=-1,
-        help="The device to run the pipeline on. -1 for CPU (default), 0 for the first GPU and so on.",
+        type=str,
+        default="cpu",
+        help="The device to run the pipeline on.",
     )
     parser.add_argument(
         "--max_eval_samples",
